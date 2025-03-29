@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Royal Cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🛍️ Overview
 
-## Available Scripts
+Royal Cart is a fully functional eCommerce website that provides a seamless shopping experience for users. It includes essential features like product browsing, user authentication, shopping cart, checkout process, and order management. Built using modern web technologies, the platform ensures scalability, responsiveness, and security.
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- **User Authentication**: Secure login and signup using JWT authentication.
+- **Product Management**: Browse, search, and filter products with dynamic categories.
+- **Shopping Cart**: Add, update, and remove items from the cart.
+- **Checkout & Payments**: Integrated payment gateway for seamless transactions.
+- **Order Management**: Track orders with real-time updates.
+- **Admin Dashboard**: Manage products, users, and orders efficiently.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend**: React.js, Redux, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: JSON Web Tokens (JWT)
+- **Payment Gateway**: Stripe/PayPal (or as per integration)
+- **Deployment**: Vercel/Netlify (Frontend), Render/Heroku (Backend)
 
-### `npm test`
+## 📷 Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*Add some screenshots of the project here*
 
-### `npm run build`
+## 📂 Installation & Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Ensure you have the following installed:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js
+- MongoDB
 
-### `npm run eject`
+### Clone the Repository
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/NikhiL-Developer03/royal-cart.git
+cd royal-cart
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Install Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+# Install backend dependencies
+cd backend
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
 
-## Learn More
+### Configure Environment Variables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a `.env` file in the backend folder and add the required environment variables:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+MONGO_URI=your_mongo_db_uri
+JWT_SECRET=your_jwt_secret
+PAYMENT_GATEWAY_KEY=your_payment_key
+```
 
-### Code Splitting
+### Run the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# Start backend server
+cd backend
+npm start
 
-### Analyzing the Bundle Size
+# Start frontend server
+cd ../frontend
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🛠️ Future Enhancements
 
-### Making a Progressive Web App
+- Wishlist feature
+- Product reviews and ratings
+- AI-powered product recommendations
+- Multi-vendor support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🤝 Contributing
 
-### Advanced Configuration
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📄 License
 
-### Deployment
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📬 Contact
 
-### `npm run build` fails to minify
+For any queries or collaboration, connect with me:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **GitHub**: [NikhiL-Developer03](https://github.com/NikhiL-Developer03)
+- **LinkedIn**: [Nikhil](https://www.linkedin.com/in/nikhil-web-developer/)
