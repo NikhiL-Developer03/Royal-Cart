@@ -101,7 +101,6 @@ const Home = () => {
                     <img
                       src="assets/img/carousel/p3.jpg"
                       className="img-fluid animated"
-                      alt=""
                     />
                   </div>
                 </div>
