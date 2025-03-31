@@ -79,6 +79,9 @@ const Navbar = () => {
               <li>
                 <NavLink to="/contactus">Contact US</NavLink>
               </li>
+              <li>
+                <NavLink to="/admin">Admin</NavLink>
+              </li>
               {/* <li className="dropdown">
                 <NavLink to="#">
                   <span>Dropdown</span>{" "}
