@@ -9,6 +9,8 @@ import FeaturesPage from "./Pages/FeaturesPage";
 import TestimonialPage from "./Pages/TestimonialPage";
 import ContactUsPage from "./Pages/ContactUsPage";
 import AdminHome from "./Pages/Admin/AdminHome";
+import AdminMaincategory from "./Pages/Admin/Maincategory/AdminMaincategory";
+import AdminCreateMaincategory from "./Pages/Admin/Maincategory/AdminCreateMaincategory";
 
 const App = () => {
   return (
@@ -24,7 +26,8 @@ const App = () => {
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminHome />} />
-
+        <Route path="/admin/maincategory" element={<AdminMaincategory />} />
+        <Route path="/admin/maincategory/create" element={<AdminCreateMaincategory />} />
       </Routes>   
       <Footer />
     </BrowserRouter>
