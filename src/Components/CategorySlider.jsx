@@ -35,8 +35,8 @@ const CategorySlider = () => {
   }
   window.addEventListener("resize", handelWindowResize);
   return (
-    <section id="clients" class="clients section">
-      <div class="container section-title" data-aos="fade-up">
+    <section id="clients" className="clients section">
+      <div className="container section-title" data-aos="fade-up">
         <h2>Clients</h2>
         <p>
           We work with best clients
@@ -44,66 +44,66 @@ const CategorySlider = () => {
         </p>
       </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div className="container" data-aos="fade-up" data-aos-delay="100">
         <Swiper {...options}
         >
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-1.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-2.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-3.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-4.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-5.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-6.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-7.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <SwiperSlide class="swiper-slide">
+          <SwiperSlide className="swiper-slide">
             <img
               src="assets/img/clients/client-8.png"
-              class="img-fluid"
+              className="img-fluid"
               style={{ height: 80 }}
             />
           </SwiperSlide>
-          <div class="swiper-pagination"></div>
+          <div className="swiper-pagination"></div>
         </Swiper>
       </div>
     </section>
