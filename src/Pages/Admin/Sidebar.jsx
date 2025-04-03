@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div class="list-group">
+    <div className="list-group">
       <Link
         to="/admin"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-home fs-2"></i>{" "}
@@ -14,7 +14,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/maincategory"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-list fs-2"></i>{" "}
@@ -22,7 +22,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/subcategory"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-list fs-2"></i>{" "}
@@ -30,7 +30,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/brand"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-list fs-2"></i>{" "}
@@ -38,7 +38,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/products"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-list fs-2"></i>{" "}
@@ -46,7 +46,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/testimonial"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-star fs-2"></i>{" "}
@@ -54,7 +54,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/user"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-users fs-2"></i>{" "}
@@ -62,7 +62,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/newsletter"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-envelope fs-2"></i>{" "}
@@ -70,7 +70,7 @@ const Sidebar = () => {
       </Link>
       <Link
         to="/admin/contactus"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-phone fs-2"></i>{" "}
@@ -78,7 +78,7 @@ const Sidebar = () => {
       </Link>
       <Link 
         to="/admin/checkouts"
-        class="list-group-item list-group-item-action active mb-1"
+        className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-shopping fs-2"></i>{" "}
