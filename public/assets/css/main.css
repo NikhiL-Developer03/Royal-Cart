@@ -87,6 +87,14 @@ h6 {
   font-family: var(--heading-font);
 }
 
+.adminHome{
+  width: 100%;
+}
+
+/* .adminProfile{
+  width: 60%;
+} */
+
 
 
 /* PHP Email Form Messages

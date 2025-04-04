@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BreadCrum from "../../../Components/BreadCrum";
 import Sidebar from "../Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
 
@@ -18,10 +18,14 @@ const AdminCreateMaincategory = () => {
   });
 
   let [show, setShow] = useState(false);
+  let navigate = useNavigate();
 
   function getInputData(e) {
     var name = e.target.name;
-    var value = e.target.files ? e.target.files[0].name : e.target.value;
+    var value =
+      e.target.files && e.target.files.length
+        ? "maincategory/" + e.target.files[0].name
+        : e.target.value;
 
     setErrorMessage((old) => {
       return {
@@ -37,21 +41,33 @@ const AdminCreateMaincategory = () => {
       };
     });
   }
-  function postData(e) {
+  async function postData(e) {
     e.preventDefault();
     let error = Object.values(errorMessage).find((x) => x !== "");
     if (error) {
       setShow(true);
     } else {
-      alert(`Name : ${data.name}
-        Pic : ${data.pic}
-        Active : ${data.active}
-        `);
+      let response = await fetch(
+        process.env.REACT_APP_BACKEND_SERVER + "maincategory",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name: data.name,
+            pic: data.pic,
+            active: data.active,
+          }),
+        }
+      );
+      response = await response.json();
+      navigate("/admin/maincategory");
     }
   }
   return (
     <>
-      <BreadCrum title="Admin" />
+      <BreadCrum title=" Admin" />
       <div className="conatiner-fluid my-3">
         <div className="row">
           <div className="col-md-3">
