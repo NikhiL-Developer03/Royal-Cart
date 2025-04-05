@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrum from "../../../Components/BreadCrum";
 import Sidebar from "../Sidebar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
 
-const AdminCreateMaincategory = () => {
+
+const AdminUpdateMaincategory = () => {
+  let { id } = useParams();
+
+  let [MaincategoryStateData, setMaincategoryStateData] = useState([]);
+
   let [data, setData] = useState({
     name: "",
     pic: "",
@@ -13,8 +18,8 @@ const AdminCreateMaincategory = () => {
   });
 
   let [errorMessage, setErrorMessage] = useState({
-    name: "Name Field Is Mendatory",
-    pic: "Pic Field Is Mendatory",
+    name: "",
+    pic: "",
   });
 
   let [show, setShow] = useState(false);
@@ -47,15 +52,28 @@ const AdminCreateMaincategory = () => {
     if (error) {
       setShow(true);
     } else {
+      let item = MaincategoryStateData.find(
+        (x) => x.id!==id && x.name.toLowerCase() === data.name.toLowerCase()
+      );
+      if (item) {
+        setShow(true);
+        setErrorMessage((old) => {
+          return {
+            ...old,
+            name: "Maincategory With Same Name Already Exist",
+          };
+        });
+        return;
+      }
       let response = await fetch(
-        process.env.REACT_APP_BACKEND_SERVER + "maincategory",
+        process.env.REACT_APP_BACKEND_SERVER + "maincategory/"+data.id,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "content-type": "application/json",
           },
           body: JSON.stringify({
-           ...data
+            ...data
           }),
         }
       );
@@ -63,6 +81,23 @@ const AdminCreateMaincategory = () => {
       navigate("/admin/maincategory");
     }
   }
+  useEffect(() => {
+    (async () => {
+      let response = await fetch(
+        process.env.REACT_APP_BACKEND_SERVER + "maincategory",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      response = await response.json();
+      setMaincategoryStateData(response);
+      let item = response.find((x) => x.id === id);
+      if (item) setData({ ...item });
+    })();
+  }, []);
   return (
     <>
       <BreadCrum title=" Admin" />
@@ -84,6 +119,7 @@ const AdminCreateMaincategory = () => {
                 <input
                   type="text"
                   name="name"
+                  value={data.name}
                   onChange={getInputData}
                   placeholder="Maincategory Name"
                   className={`form-control border-3 ${
@@ -93,12 +129,12 @@ const AdminCreateMaincategory = () => {
                   }`}
                 />
                 {show && errorMessage.name ? (
-                  <p className="text-danger">{errorMessage.name}</p>
+                  <p className="text-capitalize text-danger">{errorMessage.name}</p>
                 ) : null}
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label>Pic*</label>
+                  <label>Pic</label>
                   <input
                     type="file"
                     name="pic"
@@ -110,13 +146,14 @@ const AdminCreateMaincategory = () => {
                     }`}
                   />
                   {show && errorMessage.pic ? (
-                    <p className="text-danger">{errorMessage.pic}</p>
+                    <p className="text-capitalize text-danger">{errorMessage.pic}</p>
                   ) : null}
                 </div>
                 <div className="col-md-6 mb-3">
                   <label>Active*</label>
                   <select
                     name="active"
+                    value={data.active ? "1" : "0"}
                     onChange={getInputData}
                     className="form-select"
                   >
@@ -127,7 +164,7 @@ const AdminCreateMaincategory = () => {
               </div>
               <div className="mb-3">
                 <button type="submit" className="btn btn-primary w-100">
-                  Create
+                  Update
                 </button>
               </div>
             </form>
@@ -138,4 +175,4 @@ const AdminCreateMaincategory = () => {
   );
 };
 
-export default AdminCreateMaincategory;
+export default AdminUpdateMaincategory;

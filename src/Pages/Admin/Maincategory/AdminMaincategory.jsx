@@ -5,21 +5,37 @@ import { Link } from "react-router-dom";
 const AdminMaincategory = () => {
   let [MaincategoryStateData, setMaincategoryStateData] = useState([]);
 
-  useEffect(() => {
-    (async () => {
+  async function deleteRecord(id) {
+    if (window.confirm("Are You Sure to Delete that Item : ")) {
       let response = await fetch(
-        process.env.REACT_APP_BACKEND_SERVER + "maincategory",
+        process.env.REACT_APP_BACKEND_SERVER + "maincategory/" + id,
         {
-          method: "GET",
+          method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
       response = await response.json();
-      // console.log(response);
-      setMaincategoryStateData(response);
-    })();
+      getAPIData();
+    }
+  }
+
+  async function getAPIData() {
+    let response = await fetch(
+      process.env.REACT_APP_BACKEND_SERVER + "maincategory",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    response = await response.json();
+    setMaincategoryStateData(response);
+  }
+  useEffect(() => {
+    getAPIData();
   }, []);
   return (
     <>
@@ -37,7 +53,7 @@ const AdminMaincategory = () => {
               </Link>
             </h5>
             <div className="table-responsive">
-              <table>
+              <table className="table table-bordered table-striped table-hover">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -67,9 +83,23 @@ const AdminMaincategory = () => {
                             />
                           </Link>
                         </td>
-                        <td>{item.active}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{item.active?"Yes":"No"}</td>
+                        <td>
+                          <Link
+                            to={`/admin/maincategory/update/${item.id}`}
+                            className="btn btn-primary"
+                          >
+                            <i className="fa fa-edit"></i>
+                          </Link>
+                        </td>
+                        <td>
+                          <button
+                            className="btn  btn-danger"
+                            onClick={() => deleteRecord(item.id)}
+                          >
+                            <i className="fa fa-trash"></i>
+                          </button>
+                        </td>
                       </tr>
                     );
                   })}
