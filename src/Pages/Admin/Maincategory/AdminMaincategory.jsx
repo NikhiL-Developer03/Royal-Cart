@@ -1,8 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import BreadCrum from "../../../Components/BreadCrum";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
+
+import $ from "jquery";
+import "datatables.net";
+import "datatables.net-dt/css/dataTables.dataTables.min.css";
+
 const AdminMaincategory = () => {
+  // let table = new DataTable("#myTable");
+  let tableRef = useRef();
+
   let [MaincategoryStateData, setMaincategoryStateData] = useState([]);
 
   async function deleteRecord(id) {
@@ -33,9 +42,15 @@ const AdminMaincategory = () => {
     );
     response = await response.json();
     setMaincategoryStateData(response);
+
+    var time = setTimeout(() => {
+      $("#myTable").DataTable();
+    }, 300);
+    return time;
   }
   useEffect(() => {
-    getAPIData();
+    let time = getAPIData();
+    return () => clearTimeout(time)
   }, []);
   return (
     <>
@@ -53,7 +68,10 @@ const AdminMaincategory = () => {
               </Link>
             </h5>
             <div className="table-responsive">
-              <table className="table table-bordered table-striped table-hover">
+              <table
+                id="myTable"
+                className="table table-bordered table-striped table-hover"
+              >
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -83,7 +101,7 @@ const AdminMaincategory = () => {
                             />
                           </Link>
                         </td>
-                        <td>{item.active?"Yes":"No"}</td>
+                        <td>{item.active ? "Yes" : "No"}</td>
                         <td>
                           <Link
                             to={`/admin/maincategory/update/${item.id}`}
