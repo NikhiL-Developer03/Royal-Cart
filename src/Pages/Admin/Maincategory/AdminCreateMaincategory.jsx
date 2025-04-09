@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BreadCrum from "../../../Components/BreadCrum";
 import Sidebar from "../Sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  getMaincategory,
+  createMaincategory,
+} from "../../../Redux/ActionCreators/MaincategoryActionCreator";
 
 const AdminCreateMaincategory = () => {
   let [data, setData] = useState({
@@ -18,6 +24,12 @@ const AdminCreateMaincategory = () => {
   });
 
   let [show, setShow] = useState(false);
+
+  let MaincategoryStateData = useSelector(
+    (state) => state.MaincategoryStateData
+  );
+  let dispatch = useDispatch();
+
   let navigate = useNavigate();
 
   function getInputData(e) {
@@ -26,6 +38,10 @@ const AdminCreateMaincategory = () => {
       e.target.files && e.target.files.length
         ? "maincategory/" + e.target.files[0].name
         : e.target.value;
+    // var value =
+    //   e.target.files && e.target.files.length
+    //     ? e.target.files[0]
+    //     : e.target.value;
 
     setErrorMessage((old) => {
       return {
@@ -41,31 +57,43 @@ const AdminCreateMaincategory = () => {
       };
     });
   }
-  async function postData(e) {
+  function postData(e) {
     e.preventDefault();
     let error = Object.values(errorMessage).find((x) => x !== "");
     if (error) {
       setShow(true);
     } else {
-      let response = await fetch(
-        process.env.REACT_APP_BACKEND_SERVER + "maincategory",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-           ...data
-          }),
-        }
+      let item = MaincategoryStateData.find(
+        (x) => x.name.toLowerCase() === data.name.toLowerCase()
       );
-      response = await response.json();
+      if (item) {
+        setShow(true);
+        setErrorMessage((old) => {
+          return {
+            ...old,
+            name: "Maincategory With Same Name already Exist",
+          };
+        });
+        return;
+      }
+      dispatch(createMaincategory({ ...data }));
+
+      // let formData = new FormData();
+      // formData.append("name", data.name);
+      // formData.append("pic", data.pic);
+      // formData.append("active", data.active);
+      // dispatch(createMaincategory(formData));
+      
       navigate("/admin/maincategory");
     }
   }
+
+  useEffect(() => {
+    dispatch(getMaincategory());
+  }, [MaincategoryStateData.length]);
   return (
     <>
-      <BreadCrum title=" Admin" />
+      <BreadCrum title="Admin" />
       <div className="conatiner-fluid my-3">
         <div className="row">
           <div className="col-md-3">

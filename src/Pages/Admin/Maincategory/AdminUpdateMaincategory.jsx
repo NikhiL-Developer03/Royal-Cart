@@ -4,12 +4,20 @@ import Sidebar from "../Sidebar";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getMaincategory,
+  updateMaincategory,
+} from "../../../Redux/ActionCreators/MaincategoryActionCreator";
 
 const AdminUpdateMaincategory = () => {
   let { id } = useParams();
 
-  let [MaincategoryStateData, setMaincategoryStateData] = useState([]);
+  let MaincategoryStateData = useSelector(
+    (state) => state.MaincategoryStateData
+  );
+
+  let dispatch = useDispatch();
 
   let [data, setData] = useState({
     name: "",
@@ -23,6 +31,7 @@ const AdminUpdateMaincategory = () => {
   });
 
   let [show, setShow] = useState(false);
+
   let navigate = useNavigate();
 
   function getInputData(e) {
@@ -53,7 +62,7 @@ const AdminUpdateMaincategory = () => {
       setShow(true);
     } else {
       let item = MaincategoryStateData.find(
-        (x) => x.id!==id && x.name.toLowerCase() === data.name.toLowerCase()
+        (x) => x.id !== id && x.name.toLowerCase() === data.name.toLowerCase()
       );
       if (item) {
         setShow(true);
@@ -65,39 +74,16 @@ const AdminUpdateMaincategory = () => {
         });
         return;
       }
-      let response = await fetch(
-        process.env.REACT_APP_BACKEND_SERVER + "maincategory/"+data.id,
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            ...data
-          }),
-        }
-      );
-      response = await response.json();
+      dispatch(updateMaincategory({ ...data }));
       navigate("/admin/maincategory");
     }
   }
   useEffect(() => {
-    (async () => {
-      let response = await fetch(
-        process.env.REACT_APP_BACKEND_SERVER + "maincategory",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      response = await response.json();
-      setMaincategoryStateData(response);
-      let item = response.find((x) => x.id === id);
-      if (item) setData({ ...item });
-    })();
-  }, []);
+    dispatch(getMaincategory());
+    if (MaincategoryStateData.length) {
+      setData(MaincategoryStateData.find((x) => x.id === id));
+    }
+  }, [MaincategoryStateData.length]);
   return (
     <>
       <BreadCrum title=" Admin" />
@@ -129,7 +115,9 @@ const AdminUpdateMaincategory = () => {
                   }`}
                 />
                 {show && errorMessage.name ? (
-                  <p className="text-capitalize text-danger">{errorMessage.name}</p>
+                  <p className="text-capitalize text-danger">
+                    {errorMessage.name}
+                  </p>
                 ) : null}
               </div>
               <div className="row">
@@ -146,7 +134,9 @@ const AdminUpdateMaincategory = () => {
                     }`}
                   />
                   {show && errorMessage.pic ? (
-                    <p className="text-capitalize text-danger">{errorMessage.pic}</p>
+                    <p className="text-capitalize text-danger">
+                      {errorMessage.pic}
+                    </p>
                   ) : null}
                 </div>
                 <div className="col-md-6 mb-3">

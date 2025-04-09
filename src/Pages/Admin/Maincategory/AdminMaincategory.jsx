@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 
 import BreadCrum from "../../../Components/BreadCrum";
 import Sidebar from "../Sidebar";
@@ -8,50 +8,39 @@ import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/dataTables.dataTables.min.css";
 
-const AdminMaincategory = () => {
-  // let table = new DataTable("#myTable");
-  let tableRef = useRef();
+import {
+  deleteMaincategory,
+  getMaincategory,
+} from "../../../Redux/ActionCreators/MaincategoryActionCreator";
+import { useDispatch, useSelector } from "react-redux";
 
-  let [MaincategoryStateData, setMaincategoryStateData] = useState([]);
+const AdminMaincategory = () => {
+
+  let dispatch = useDispatch();
+  let MaincategoryStateData = useSelector(
+    (state) => state.MaincategoryStateData
+  );
 
   async function deleteRecord(id) {
     if (window.confirm("Are You Sure to Delete that Item : ")) {
-      let response = await fetch(
-        process.env.REACT_APP_BACKEND_SERVER + "maincategory/" + id,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      response = await response.json();
+      dispatch(deleteMaincategory({id:id}));
       getAPIData();
     }
   }
 
-  async function getAPIData() {
-    let response = await fetch(
-      process.env.REACT_APP_BACKEND_SERVER + "maincategory",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    response = await response.json();
-    setMaincategoryStateData(response);
-
-    var time = setTimeout(() => {
-      $("#myTable").DataTable();
-    }, 300);
-    return time;
+  function getAPIData() {
+    dispatch(getMaincategory());
+    if (MaincategoryStateData.length) {
+      var time = setTimeout(() => {
+        $("#myTable").DataTable();
+      }, 300);
+      return time;
+    }
   }
   useEffect(() => {
     let time = getAPIData();
-    return () => clearTimeout(time)
-  }, []);
+    return () => clearTimeout(time);
+  }, [MaincategoryStateData.length]);
   return (
     <>
       <BreadCrum title="Admin" />
