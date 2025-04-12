@@ -32,7 +32,7 @@ function* deleteSaga(action) {
   yield deleteRecord("maincategory",action.payload);
   yield put({ type: DELETE_MAINCATEGORY_RED, payload: action.payload });
 }
-
+ 
 export default function* maincategorySagas() {
   yield takeEvery(CREATE_MAINCATEGORY, createSaga); //watcher saga
   yield takeEvery(GET_MAINCATEGORY, getSaga);  //watcher saga

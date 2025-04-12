@@ -6,27 +6,27 @@ import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getMaincategory,
-  updateMaincategory,
-} from "../../../Redux/ActionCreators/MaincategoryActionCreator";
+  getTestimonial,
+  updateTestimonial,
+} from "../../../Redux/ActionCreators/TestimonialActionCreator";
 
-const AdminUpdateMaincategory = () => {
+const AdminUpdateTestimonial = () => {
   let { id } = useParams();
 
-  let MaincategoryStateData = useSelector(
-    (state) => state.MaincategoryStateData
-  );
+  let TestimonialStateData = useSelector((state) => state.TestimonialStateData);
 
   let dispatch = useDispatch();
 
   let [data, setData] = useState({
     name: "",
     pic: "",
+    message: "",
     active: true,
   });
 
   let [errorMessage, setErrorMessage] = useState({
     name: "",
+    message: "",
     pic: "",
   });
 
@@ -38,7 +38,7 @@ const AdminUpdateMaincategory = () => {
     var name = e.target.name;
     var value =
       e.target.files && e.target.files.length
-        ? "maincategory/" + e.target.files[0].name
+        ? "testimonial/" + e.target.files[0].name
         : e.target.value;
     // var value =
     //   e.target.files && e.target.files.length
@@ -65,7 +65,7 @@ const AdminUpdateMaincategory = () => {
     if (error) {
       setShow(true);
     } else {
-      let item = MaincategoryStateData.find(
+      let item = TestimonialStateData.find(
         (x) => x.id !== id && x.name.toLowerCase() === data.name.toLowerCase()
       );
       if (item) {
@@ -73,30 +73,30 @@ const AdminUpdateMaincategory = () => {
         setErrorMessage((old) => {
           return {
             ...old,
-            name: "Maincategory With Same Name Already Exist",
+            name: "Testimonial With Same Name Already Exist",
           };
         });
         return;
       }
-      dispatch(updateMaincategory({ ...data }));
+      dispatch(updateTestimonial({ ...data }));
 
       // let formData = new FormData();
       // formData.append("_id", data._id);
       // formData.append("name", data.name);
+      // formData.append("message", data.message);
       // formData.append("pic", data.pic);
       // formData.append("active", data.active);
-      // dispatch(createMaincategory(formData));
-      
+      // dispatch(createTestimonial(formData));
 
-      navigate("/admin/maincategory");
+      navigate("/admin/testimonial");
     }
   }
   useEffect(() => {
-    dispatch(getMaincategory());
-    if (MaincategoryStateData.length) {
-      setData(MaincategoryStateData.find((x) => x.id === id));
+    dispatch(getTestimonial());
+    if (TestimonialStateData.length) {
+      setData(TestimonialStateData.find((x) => x.id === id));
     }
-  }, [MaincategoryStateData.length]);
+  }, [TestimonialStateData.length]);
   return (
     <>
       <BreadCrum title=" Admin" />
@@ -107,8 +107,8 @@ const AdminUpdateMaincategory = () => {
           </div>
           <div className="col-md-9">
             <h5 className="bg-primary w-100 p-2 text-light text-center">
-              Maincategory
-              <Link to="/admin/maincategory">
+              Testimonial
+              <Link to="/admin/testimonial">
                 <i className="fa fa-long-arrow-left text-light float-end"></i>
               </Link>
             </h5>
@@ -120,7 +120,7 @@ const AdminUpdateMaincategory = () => {
                   name="name"
                   value={data.name}
                   onChange={getInputData}
-                  placeholder="Maincategory Name"
+                  placeholder="Testimonial Name"
                   className={`form-control border-3 ${
                     show && errorMessage.name
                       ? "border-danger"
@@ -131,6 +131,24 @@ const AdminUpdateMaincategory = () => {
                   <p className="text-capitalize text-danger">
                     {errorMessage.name}
                   </p>
+                ) : null}
+              </div>
+              <div className="mb-3">
+                <label>Message*</label>
+                <textarea
+                  name="message"
+                  value={data.message}
+                  onChange={getInputData}
+                  className={`form-control border-3 ${
+                    show && errorMessage.message
+                      ? "border-danger"
+                      : "border-primary"
+                  }`}
+                  placeholder="Message..."
+                  rows={5}
+                ></textarea>
+                {show && errorMessage.message ? (
+                  <p className="text-danger">{errorMessage.message}</p>
                 ) : null}
               </div>
               <div className="row">
@@ -178,4 +196,4 @@ const AdminUpdateMaincategory = () => {
   );
 };
 
-export default AdminUpdateMaincategory;
+export default AdminUpdateTestimonial;

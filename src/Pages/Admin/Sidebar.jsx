@@ -37,12 +37,12 @@ const Sidebar = () => {
         <span className="float-end">Brand</span>
       </Link>
       <Link
-        to="/admin/products"
+        to="/admin/product"
         className="list-group-item list-group-item-action active mb-1"
         aria-current="true"
       >
         <i className="fa fa-list fs-2"></i>{" "}
-        <span className="float-end">Products</span>
+        <span className="float-end">Product</span>
       </Link>
       <Link
         to="/admin/testimonial"

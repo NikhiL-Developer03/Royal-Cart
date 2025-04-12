@@ -13,6 +13,22 @@ import AdminMaincategory from "./Pages/Admin/Maincategory/AdminMaincategory";
 import AdminCreateMaincategory from "./Pages/Admin/Maincategory/AdminCreateMaincategory";
 import AdminUpdateMaincategory from "./Pages/Admin/Maincategory/AdminUpdateMaincategory";
 
+import AdminSubcategory from "./Pages/Admin/Subcategory/AdminSubcategory";
+import AdminCreateSubcategory from "./Pages/Admin/Subcategory/AdminCreateSubcategory";
+import AdminUpdateSubcategory from "./Pages/Admin/Subcategory/AdminUpdateSubcategory";
+
+import AdminBrand from "./Pages/Admin/Brand/AdminBrand";
+import AdminCreateBrand from "./Pages/Admin/Brand/AdminCreateBrand";
+import AdminUpdateBrand from "./Pages/Admin/Brand/AdminUpdateBrand";
+
+import AdminTestimonial from "./Pages/Admin/Testimonial/AdminTestimonial";
+import AdminCreateTestimonial from "./Pages/Admin/Testimonial/AdminCreateTestimonial";
+import AdminUpdateTestimonial from "./Pages/Admin/Testimonial/AdminUpdateTestimonial";
+
+import AdminProduct from "./Pages/Admin/Product/AdminProduct";
+import AdminCreateProduct from "./Pages/Admin/Product/AdminCreateProduct";
+import AdminUpdateProduct from "./Pages/Admin/Product/AdminUpdateProduct";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -27,6 +43,7 @@ const App = () => {
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminHome />} />
+
         <Route path="/admin/maincategory" element={<AdminMaincategory />} />
         <Route
           path="/admin/maincategory/create"
@@ -35,6 +52,45 @@ const App = () => {
         <Route
           path="/admin/maincategory/update/:id"
           element={<AdminUpdateMaincategory />}
+        />
+
+        {/* Subcategory */}
+
+        <Route path="/admin/subcategory" element={<AdminSubcategory />} />
+        <Route
+          path="/admin/subcategory/create"
+          element={<AdminCreateSubcategory />}
+        />
+        <Route
+          path="/admin/subcategory/update/:id"
+          element={<AdminUpdateSubcategory />}
+        />
+
+        {/* Brand */}
+
+        <Route path="/admin/brand" element={<AdminBrand />} />
+        <Route path="/admin/brand/create" element={<AdminCreateBrand />} />
+        <Route path="/admin/brand/update/:id" element={<AdminUpdateBrand />} />
+
+        {/* Testimonial */}
+
+        <Route path="/admin/testimonial" element={<AdminTestimonial />} />
+        <Route
+          path="/admin/testimonial/create"
+          element={<AdminCreateTestimonial />}
+        />
+        <Route
+          path="/admin/testimonial/update/:id"
+          element={<AdminUpdateTestimonial />}
+        />
+
+        {/* Product */}
+
+        <Route path="/admin/product" element={<AdminProduct />} />
+        <Route path="/admin/product/create" element={<AdminCreateProduct />} />
+        <Route
+          path="/admin/product/update/:id"
+          element={<AdminUpdateProduct />}
         />
       </Routes>
       <Footer />

@@ -109,6 +109,13 @@ h6 {
   font-weight: 600;
 }
 
+.testimonial-message,.product-table-image{
+  height: 100px;
+  width: 500px;
+  overflow: auto;
+  text-align: justify;
+}
+
 .php-email-form .sent-message {
   display: none;
   color: #ffffff;

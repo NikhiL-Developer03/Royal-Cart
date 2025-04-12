@@ -6,15 +6,15 @@ import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getMaincategory,
-  updateMaincategory,
-} from "../../../Redux/ActionCreators/MaincategoryActionCreator";
+  getSubcategory,
+  updateSubcategory,
+} from "../../../Redux/ActionCreators/SubcategoryActionCreator";
 
-const AdminUpdateMaincategory = () => {
+const AdminUpdateSubcategory = () => {
   let { id } = useParams();
 
-  let MaincategoryStateData = useSelector(
-    (state) => state.MaincategoryStateData
+  let SubcategoryStateData = useSelector(
+    (state) => state.SubcategoryStateData
   );
 
   let dispatch = useDispatch();
@@ -38,7 +38,7 @@ const AdminUpdateMaincategory = () => {
     var name = e.target.name;
     var value =
       e.target.files && e.target.files.length
-        ? "maincategory/" + e.target.files[0].name
+        ? "subcategory/" + e.target.files[0].name
         : e.target.value;
     // var value =
     //   e.target.files && e.target.files.length
@@ -65,7 +65,7 @@ const AdminUpdateMaincategory = () => {
     if (error) {
       setShow(true);
     } else {
-      let item = MaincategoryStateData.find(
+      let item = SubcategoryStateData.find(
         (x) => x.id !== id && x.name.toLowerCase() === data.name.toLowerCase()
       );
       if (item) {
@@ -73,30 +73,30 @@ const AdminUpdateMaincategory = () => {
         setErrorMessage((old) => {
           return {
             ...old,
-            name: "Maincategory With Same Name Already Exist",
+            name: "Subcategory With Same Name Already Exist",
           };
         });
         return;
       }
-      dispatch(updateMaincategory({ ...data }));
+      dispatch(updateSubcategory({ ...data }));
 
       // let formData = new FormData();
       // formData.append("_id", data._id);
       // formData.append("name", data.name);
       // formData.append("pic", data.pic);
       // formData.append("active", data.active);
-      // dispatch(createMaincategory(formData));
+      // dispatch(createSubcategory(formData));
       
 
-      navigate("/admin/maincategory");
+      navigate("/admin/subcategory");
     }
   }
   useEffect(() => {
-    dispatch(getMaincategory());
-    if (MaincategoryStateData.length) {
-      setData(MaincategoryStateData.find((x) => x.id === id));
+    dispatch(getSubcategory());
+    if (SubcategoryStateData.length) {
+      setData(SubcategoryStateData.find((x) => x.id === id));
     }
-  }, [MaincategoryStateData.length]);
+  }, [SubcategoryStateData.length]);
   return (
     <>
       <BreadCrum title=" Admin" />
@@ -107,8 +107,8 @@ const AdminUpdateMaincategory = () => {
           </div>
           <div className="col-md-9">
             <h5 className="bg-primary w-100 p-2 text-light text-center">
-              Maincategory
-              <Link to="/admin/maincategory">
+              Subcategory
+              <Link to="/admin/subcategory">
                 <i className="fa fa-long-arrow-left text-light float-end"></i>
               </Link>
             </h5>
@@ -120,7 +120,7 @@ const AdminUpdateMaincategory = () => {
                   name="name"
                   value={data.name}
                   onChange={getInputData}
-                  placeholder="Maincategory Name"
+                  placeholder="Subcategory Name"
                   className={`form-control border-3 ${
                     show && errorMessage.name
                       ? "border-danger"
@@ -178,4 +178,4 @@ const AdminUpdateMaincategory = () => {
   );
 };
 
-export default AdminUpdateMaincategory;
+export default AdminUpdateSubcategory;

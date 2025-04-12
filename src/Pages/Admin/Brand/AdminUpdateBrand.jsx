@@ -6,16 +6,14 @@ import FormValidator from "../../../Validators/FormValidator";
 import ImageValidator from "../../../Validators/ImageValidator";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getMaincategory,
-  updateMaincategory,
-} from "../../../Redux/ActionCreators/MaincategoryActionCreator";
+  getBrand,
+  updateBrand,
+} from "../../../Redux/ActionCreators/BrandActionCreator";
 
-const AdminUpdateMaincategory = () => {
+const AdminUpdateBrand = () => {
   let { id } = useParams();
 
-  let MaincategoryStateData = useSelector(
-    (state) => state.MaincategoryStateData
-  );
+  let BrandStateData = useSelector((state) => state.BrandStateData);
 
   let dispatch = useDispatch();
 
@@ -38,7 +36,7 @@ const AdminUpdateMaincategory = () => {
     var name = e.target.name;
     var value =
       e.target.files && e.target.files.length
-        ? "maincategory/" + e.target.files[0].name
+        ? "brand/" + e.target.files[0].name
         : e.target.value;
     // var value =
     //   e.target.files && e.target.files.length
@@ -65,7 +63,7 @@ const AdminUpdateMaincategory = () => {
     if (error) {
       setShow(true);
     } else {
-      let item = MaincategoryStateData.find(
+      let item = BrandStateData.find(
         (x) => x.id !== id && x.name.toLowerCase() === data.name.toLowerCase()
       );
       if (item) {
@@ -73,30 +71,29 @@ const AdminUpdateMaincategory = () => {
         setErrorMessage((old) => {
           return {
             ...old,
-            name: "Maincategory With Same Name Already Exist",
+            name: "Brand With Same Name Already Exist",
           };
         });
         return;
       }
-      dispatch(updateMaincategory({ ...data }));
+      dispatch(updateBrand({ ...data }));
 
       // let formData = new FormData();
       // formData.append("_id", data._id);
       // formData.append("name", data.name);
       // formData.append("pic", data.pic);
       // formData.append("active", data.active);
-      // dispatch(createMaincategory(formData));
-      
+      // dispatch(createBrand(formData));
 
-      navigate("/admin/maincategory");
+      navigate("/admin/brand");
     }
   }
   useEffect(() => {
-    dispatch(getMaincategory());
-    if (MaincategoryStateData.length) {
-      setData(MaincategoryStateData.find((x) => x.id === id));
+    dispatch(getBrand());
+    if (BrandStateData.length) {
+      setData(BrandStateData.find((x) => x.id === id));
     }
-  }, [MaincategoryStateData.length]);
+  }, [BrandStateData.length]);
   return (
     <>
       <BreadCrum title=" Admin" />
@@ -107,8 +104,8 @@ const AdminUpdateMaincategory = () => {
           </div>
           <div className="col-md-9">
             <h5 className="bg-primary w-100 p-2 text-light text-center">
-              Maincategory
-              <Link to="/admin/maincategory">
+              Brand
+              <Link to="/admin/brand">
                 <i className="fa fa-long-arrow-left text-light float-end"></i>
               </Link>
             </h5>
@@ -120,7 +117,7 @@ const AdminUpdateMaincategory = () => {
                   name="name"
                   value={data.name}
                   onChange={getInputData}
-                  placeholder="Maincategory Name"
+                  placeholder="Brand Name"
                   className={`form-control border-3 ${
                     show && errorMessage.name
                       ? "border-danger"
@@ -178,4 +175,4 @@ const AdminUpdateMaincategory = () => {
   );
 };
 
-export default AdminUpdateMaincategory;
+export default AdminUpdateBrand;
