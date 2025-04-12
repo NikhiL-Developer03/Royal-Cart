@@ -12,29 +12,41 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Nunito",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Nunito", sans-serif;
+  --nav-font: "Poppins", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #012970; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #4154f1; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #444444;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #012970;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #4154f1;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #012970;  /* The default color of the main navmenu links */
-  --nav-hover-color: #4154f1; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #4154f1; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #012970;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #4154f1;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #212529;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #4154f1;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -87,7 +99,7 @@ h6 {
   font-family: var(--heading-font);
 }
 
-.adminHome{
+.adminHome {
   width: 100%;
 }
 
@@ -109,11 +121,21 @@ h6 {
   font-weight: 600;
 }
 
-.testimonial-message,.product-table-image{
+.testimonial-message,
+.product-table-image {
   height: 100px;
   width: 500px;
   overflow: auto;
   text-align: justify;
+}
+
+.slider-message { 
+  height: 300px;   
+  overflow: auto;
+  text-align: justify;
+}
+.slider-message::-webkit-scrollbar { 
+  display: none;
 }
 
 .php-email-form .sent-message {
@@ -232,8 +254,9 @@ h6 {
 .index-page.scrolled .header {
   --background-color: #ffffff;
 }
-.top-bar{
-  border-radius:0 30px 0 30px; 
+
+.top-bar {
+  border-radius: 0 30px 0 30px;
   margin-bottom: 10px;
   background-color: var(--accent-color);
 }
@@ -560,7 +583,8 @@ h6 {
   /* background-color: var(--background-color); */
   /* background: linear-gradient(to bottom,rgb(235,236,236),rgb(195,196,236),rgb(158,159,159)) ; */
 }
-.breadcrumb-container{
+
+.breadcrumb-container {
   /* background: linear-gradient(to right,blue,navy); */
   background: var(--accent-color);
   padding: 30px 0px 15px 0px;
@@ -808,9 +832,10 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding: 30px 0;
   scroll-margin-top: 98px;
   overflow: clip;
+  box-shadow: 0 0 10px 10px lightgray;
 }
 
 @media (max-width: 1199px) {
@@ -826,7 +851,7 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   position: relative;
 }
 
@@ -867,7 +892,7 @@ section,
   display: flex;
   align-items: center;
   /* background: url(../img/hero-bg.png) top center no-repeat; */
-  background: linear-gradient(to bottom,rgb(235,236,236),rgb(195,196,236),rgb(158,159,159)) ;
+  background: linear-gradient(to bottom, rgb(235, 236, 236), rgb(195, 196, 236), rgb(158, 159, 159));
   /* background-color:  red; */
   background-size: cover;
 }
@@ -2796,4 +2821,5 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
 /* ------ */

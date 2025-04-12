@@ -124,7 +124,7 @@ const AdminCreateProduct = () => {
       // formData.append("stockQuantity", data.stockQuantity);
       // formData.append("description", rte.getHTMLCode());
       // formData.append("active", data.active);
-      // dispatch(createProduct(formData));
+      // dispatch(updateProduct(formData));
 
 
       navigate("/admin/product");
