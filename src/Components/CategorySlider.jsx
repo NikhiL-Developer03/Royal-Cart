@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -6,103 +6,76 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-const CategorySlider = () => {
-  let [showPerPage, setShowPerPage] = useState(6);
+import { getMaincategory } from "../Redux/ActionCreators/MaincategoryActionCreator"
+import { getSubcategory } from "../Redux/ActionCreators/SubcategoryActionCreator"
+import { getBrand } from "../Redux/ActionCreators/BrandActionCreator"
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+const CategorySlider = ({ title }) => {
+  let [data, setData] = useState([]);
+  let MaincategoryStateData = useSelector(state => state.MaincategoryStateData)
+  let SubcategoryStateData = useSelector(state => state.SubcategoryStateData)
+  let BrandStateData = useSelector(state => state.BrandStateData)
+  let dispatch = useDispatch();
+  let [showPerPage, setShowPerPage] = useState(title === "Brand" ? 6 : 3);
   let options = {
-    slidesPerView:showPerPage,
-          spaceBetween:50,
-          loop:true,
-          freeMode:true,
-          pagination:{
-            clickable: true,
-          },
-          modules:[FreeMode, Pagination],
-          className:"mySwiper"
+    slidesPerView: showPerPage,
+    spaceBetween: 50,
+    loop: true,
+    freeMode: true,
+    pagination: {
+      clickable: true,
+    },
+    modules: [FreeMode, Pagination],
+    className: "mySwiper"
   }
 
   function handelWindowResize() {
     if (window.innerWidth < 576) {
-      setShowPerPage(2);
+      setShowPerPage(1);
     } else if (window.innerWidth < 768) {
-      setShowPerPage(3);
-    } else if (window.innerWidth < 992) {
-      setShowPerPage(4);
-    } else if (window.innerWidth < 1200) {
-      setShowPerPage(5);
+      setShowPerPage(2);
     } else {
-      setShowPerPage(6);
+      setShowPerPage(title === "Brand" ? 6 : 3);
     }
   }
   window.addEventListener("resize", handelWindowResize);
+  useEffect(() => {
+    dispatch(getMaincategory())
+  }, [MaincategoryStateData.length])
+  useEffect(() => { dispatch(getSubcategory()) }, [SubcategoryStateData.length])
+  useEffect(() => { dispatch(getBrand()) }, [BrandStateData.length])
+
+  useEffect(() => {
+    if (title === "Maincategory" && MaincategoryStateData.length !== 0)
+      setData(MaincategoryStateData.filter(x => x.active))
+    if (title === "Subcategory" && SubcategoryStateData.length !== 0)
+      setData(SubcategoryStateData.filter(x => x.active))
+    if (title === "Brand" && BrandStateData.length !== 0)
+      setData(BrandStateData.filter(x => x.active))
+  }, [title, MaincategoryStateData.length, SubcategoryStateData.length, BrandStateData.length])
   return (
     <section id="clients" className="clients section">
       <div className="container section-title" data-aos="fade-up">
-        <h2>Clients</h2>
-        <p>
-          We work with best clients
-          <br />
-        </p>
+        <h2>{title}</h2>
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
         <Swiper {...options}
         >
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-1.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-2.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-3.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-4.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-5.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-6.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-7.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
-            <img
-              src="assets/img/clients/client-8.png"
-              className="img-fluid"
-              style={{ height: 80 }}
-            />
-          </SwiperSlide>
+          {
+            data.map((item) => {
+              return <SwiperSlide
+                key={item.id} className="swiper-slide">
+                <Link to={`/shop&${title === "Maincategory" ? "mc" : (title === "Subcategory" ? "sc" : "br")}=${item.name}`}><img
+                  src={`${process.env.REACT_APP_BACKEND_SERVER}${item.pic}`}
+                  className="img-fluid"
+                  style={{ height: title === "Brand" ? 100 : 300 }}
+                /></Link>
+              </SwiperSlide>
+            })
+          }
           <div className="swiper-pagination"></div>
         </Swiper>
       </div>

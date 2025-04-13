@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import About from "../Components/About";
 import Facts from "../Components/Facts";
 import Feature from "../Components/Feature";
@@ -8,8 +8,20 @@ import Products from "../Components/Products";
 import Testimonial from "../Components/Testimonial";
 import CategorySlider from "../Components/CategorySlider";
 import { Link } from "react-router-dom";
+import { getMaincategory } from "../Redux/ActionCreators/MaincategoryActionCreator"
+import { getProduct } from "../Redux/ActionCreators/ProductActionCreator"
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+  let MaincategoryStateData = useSelector((state) => state.MaincategoryStateData)
+
+  let ProductStateData = useSelector((state) => state.ProductStateData)
+
+  let dispatch = useDispatch();
+
+  useEffect(() => { dispatch(getProduct()) }, [ProductStateData.length])
+
+  useEffect(() => { dispatch(getMaincategory()) }, [MaincategoryStateData.length])
   return (
     <>
       <div id="carouselExampleCaptions" className="carousel slide">
@@ -125,7 +137,7 @@ const Home = () => {
                       data-aos-delay="200"
                     >
                       <Link to="/shop?mc=Kids" className="btn-get-started">
-                      Shop Now <i className="bi bi-arrow-right"></i>
+                        Shop Now <i className="bi bi-arrow-right"></i>
                       </Link>
                     </div>
                   </div>
@@ -169,16 +181,24 @@ const Home = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <About />
+      <CategorySlider title="Maincategory" />
+      <About title="Home" />
+      <Products />
       <Values />
       <Facts />
+      <CategorySlider title="Subcategory" />
       <Feature />
-      <ProductsSlider />
-      <Products />
+      {
+        MaincategoryStateData.filter((x) => x.active).map((item) => {
+          return <ProductsSlider key={item.id} title={item.name} data={ProductStateData.filter(x => x.active && x.maincategory === item.name)} />
+        })
+      }
       <Testimonial />
-      <CategorySlider />
+      <CategorySlider title="Brand" />
     </>
   );
 };
 
 export default Home;
+
+
