@@ -68,7 +68,7 @@ const CategorySlider = ({ title }) => {
             data.map((item) => {
               return <SwiperSlide
                 key={item.id} className="swiper-slide">
-                <Link to={`/shop&${title === "Maincategory" ? "mc" : (title === "Subcategory" ? "sc" : "br")}=${item.name}`}><img
+                <Link to={`/shop?${title === "Maincategory" ? "mc" : (title === "Subcategory" ? "sc" : "br")}=${item.name}`}><img
                   src={`${process.env.REACT_APP_BACKEND_SERVER}${item.pic}`}
                   className="img-fluid"
                   style={{ height: title === "Brand" ? 100 : 300 }}
