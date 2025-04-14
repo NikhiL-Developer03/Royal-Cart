@@ -6,7 +6,7 @@ const Facts = () => {
       <div className="container" data-aos="fade-up" data-aos-delay="100">
         <div className="row gy-4">
           <div className="col-lg-3 col-md-6">
-            <div className="stats-item d-flex align-ite ms-center w-100 h-100">
+            <div className="stats-item d-flex align-items-center w-100 h-100">
               <i className="bi bi-emoji-smile color-blue flex-shrink-0"></i>
               <div>
                 <span 
@@ -14,8 +14,8 @@ const Facts = () => {
                   data-purecounter-end="232"
                   data-purecounter-duration="1"
                   className="purecounter"
-                ></span>
-                <p>Happy Clients</p>
+                >10000+</span>
+                <p>Happy Customers</p> 
               </div>
             </div>
           </div>
@@ -29,11 +29,11 @@ const Facts = () => {
               <div>
                 <span
                   data-purecounter-start="0"
-                  data-purecounter-end="521"
+                  data-purecounter-end="100"
                   data-purecounter-duration="1"
                   className="purecounter"
-                ></span>
-                <p>Projects</p>
+                >100+</span>
+                <p>Products</p>
               </div>
             </div>
           </div>
@@ -47,11 +47,11 @@ const Facts = () => {
               <div>
                 <span
                   data-purecounter-start="0"
-                  data-purecounter-end="1463"
+                  data-purecounter-end="24/7"
                   data-purecounter-duration="1"
                   className="purecounter"
-                ></span>
-                <p>Hours Of Support</p>
+                >24/7</span>
+                <p>Customer Support</p>
               </div>
             </div>
           </div>
@@ -65,11 +65,11 @@ const Facts = () => {
               <div>
                 <span
                   data-purecounter-start="0"
-                  data-purecounter-end="15"
+                  data-purecounter-end="50"
                   data-purecounter-duration="1"
                   className="purecounter"
-                ></span>
-                <p>Hard Workers</p>
+                >50+</span>
+                <p>Top Brands</p>
               </div>
             </div>
           </div>

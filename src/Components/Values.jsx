@@ -16,10 +16,9 @@ const Values = () => {
           <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div className="card">
               <img src="assets/img/values-1.png" className="img-fluid" alt="" />
-              <h3>Ad cupiditate sed est odio</h3>
+              <h3>Unmatched Quality You Can Trust</h3>
               <p>
-                Eum ad dolor et. Autem aut fugiat debitis voluptatem
-                consequuntur sit. Et veritatis id.
+              Handpicked styles from Adidas, Nike, Puma, and Mufti—crafted for comfort, durability, and 100% authenticity.
               </p>
             </div>
           </div>
@@ -27,10 +26,9 @@ const Values = () => {
           <div className="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div className="card">
               <img src="assets/img/values-2.png" className="img-fluid" alt="" />
-              <h3>Voluptatem voluptatum alias</h3>
+              <h3>Fast & Hassle-Free Delivery</h3>
               <p>
-                Repudiandae amet nihil natus in distinctio suscipit id.
-                Doloremque ducimus ea sit non.
+                Your time matters. That’s why we ensure smooth checkout, secure payments, and lightning-fast doorstep delivery—so you get your style, without the wait.
               </p>
             </div>
           </div>
@@ -38,10 +36,9 @@ const Values = () => {
           <div className="col-lg-4" data-aos="fade-up" data-aos-delay="300">
             <div className="card">
               <img src="assets/img/values-3.png" className="img-fluid" alt="" />
-              <h3>Fugit cupiditate alias nobis.</h3>
+              <h3>Fashion for Every Family Member</h3>
               <p>
-                Quam rem vitae est autem molestias explicabo debitis sint. Vero
-                aliquid quidem commodi.
+                From casuals to activewear, we’ve got stylish options for men, women, and kids. Royal-cart makes it easy to shop for everyone in one place.
               </p>
             </div>
           </div>

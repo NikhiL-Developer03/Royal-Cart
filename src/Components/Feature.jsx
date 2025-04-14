@@ -22,41 +22,43 @@ const Feature = () => {
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="200">
                   <div className="feature-box d-flex align-items-center">
                     <i className="bi bi-check"></i>
-                    <h3>Eos aspernatur rem</h3>
+                    <h3>Top Brand Collection</h3>
                   </div>
                 </div>
 
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="300">
                   <div className="feature-box d-flex align-items-center">
                     <i className="bi bi-check"></i>
-                    <h3>Facilis neque ipsa</h3>
-                  </div>
-                </div>
-
-                <div className="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                  <div className="feature-box d-flex align-items-center">
-                    <i className="bi bi-check"></i>
-                    <h3>Volup amet volupt</h3>
+                    <h3>All-in-one Fashion Hub</h3>
                   </div>
                 </div>
 
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="500">
                   <div className="feature-box d-flex align-items-center">
                     <i className="bi bi-check"></i>
-                    <h3>Rerum omnis sint</h3>
+                    <h3>Fast & Safe Delivery</h3>
                   </div>
                 </div>
+
+                <div className="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                  <div className="feature-box d-flex align-items-center">
+                    <i className="bi bi-check"></i>
+                    <h3>Easy Return & Exchange</h3>
+                  </div>
+                </div>
+
+
 
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="600">
                   <div className="feature-box d-flex align-items-center">
                     <i className="bi bi-check"></i>
-                    <h3>Alias possimus</h3>
+                    <h3>Secure Online Payments</h3>
                   </div>
                 </div>
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="700">
                   <div className="feature-box d-flex align-items-center">
                     <i className="bi bi-check"></i>
-                    <h3>Repellendus molli</h3>
+                    <h3>Regular Offers & Discounts</h3>
                   </div>
                 </div>
               </div>
@@ -76,10 +78,9 @@ const Feature = () => {
                 <div className="col-md-6 icon-box">
                   <i className="bi bi-award"></i>
                   <div>
-                    <h4>Corporis voluptates sit</h4>
+                    <h4>Top Brand Collection</h4>
                     <p>
-                      Consequuntur sunt aut quasi enim aliquam quae harum
-                      pariatur laboris nisi ut aliquip
+                    Discover the latest styles from global fashion leaders like Adidas, Nike, Puma, and Mufti—handpicked for quality and authenticity.
                     </p>
                   </div>
                 </div>
@@ -87,10 +88,9 @@ const Feature = () => {
                 <div className="col-md-6 icon-box">
                   <i className="bi bi-card-checklist"></i>
                   <div>
-                    <h4>Ullamco laboris nisi</h4>
+                    <h4>All-in-one Fashion Hub</h4>
                     <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt
+                    Shop trendy clothing for men, women, and kids—all in one place. From casuals to sportswear, we’ve got it all.
                     </p>
                   </div>
                 </div>
@@ -98,10 +98,9 @@ const Feature = () => {
                 <div className="col-md-6 icon-box">
                   <i className="bi bi-dribbble"></i>
                   <div>
-                    <h4>Labore consequatur</h4>
+                    <h4>Fast & Safe Delivery</h4>
                     <p>
-                      Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut
-                      maiores omnis facere
+                    Enjoy lightning-fast doorstep delivery with safe packaging and real-time tracking—your fashion arrives fresh and right on time.
                     </p>
                   </div>
                 </div>
@@ -109,10 +108,9 @@ const Feature = () => {
                 <div className="col-md-6 icon-box">
                   <i className="bi bi-filter-circle"></i>
                   <div>
-                    <h4>Beatae veritatis</h4>
+                    <h4>Easy Return & Exchange</h4>
                     <p>
-                      Expedita veritatis consequuntur nihil tempore laudantium
-                      vitae denat pacta
+                    Wrong size or change of mind? No worries! We offer simple, hassle-free returns and quick exchanges to keep you satisfied.
                     </p>
                   </div>
                 </div>
@@ -120,10 +118,9 @@ const Feature = () => {
                 <div className="col-md-6 icon-box">
                   <i className="bi bi-lightning-charge"></i>
                   <div>
-                    <h4>Molestiae dolor</h4>
+                    <h4>Secure Online Payments</h4>
                     <p>
-                      Et fuga et deserunt et enim. Dolorem architecto ratione
-                      tensa raptor marte
+                    Your privacy matters. Pay safely with our encrypted payment gateway—supporting cards, UPI, and wallets with total security.
                     </p>
                   </div>
                 </div>
@@ -131,10 +128,9 @@ const Feature = () => {
                 <div className="col-md-6 icon-box">
                   <i className="bi bi-patch-check"></i>
                   <div>
-                    <h4>Explicabo consectetur</h4>
+                    <h4>Regular Offers & Discounts</h4>
                     <p>
-                      Est autem dicta beatae suscipit. Sint veritatis et sit
-                      quasi ab aut inventore
+                    Get the best deals on your favorite brands. Enjoy seasonal sales, exclusive coupons, and daily discounts to save more.
                     </p>
                   </div>
                 </div>
