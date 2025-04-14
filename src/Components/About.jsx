@@ -18,7 +18,7 @@ const About = ({ title }) => {
                   Royal-cart brings you branded fashion from Adidas, Nike, Puma, and Mufti for men, women, and kids.
                 </h2>
                 <p className="text-justify">
-                  At Royal-cart, we offer a premium collection of branded clothing from Adidas, Nike, Puma, and Mufti—crafted for men, women, and kids. From casual wear to activewear, find outfits for every occasion. Enjoy a smooth shopping experience with secure payments, easy returns, and fast delivery. Discover style, comfort, and quality—all in one place, only at Royal-cart.
+                  At Royal-cart, we offer a premium collection of branded clothing from Adidas, Nike, Puma, and Mufti—crafted for men, women, and kids. From casual wear to activewear, find outfits for every occasion. Enjoy a smooth shopping experience with secure payments, easy returns, and fast delixsvery. Discover style, comfort, and quality—all in one place, only at Royal-cart.
                 </p>
                 <div className="text-center text-lg-start">
                   {title === "Home" ? <Link
