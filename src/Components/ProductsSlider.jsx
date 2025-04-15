@@ -48,7 +48,7 @@ const ProductsSlider = ({ title, data }) => {
             {
               data.map(item => {
                 return <SwiperSlide key={item.id}>
-                  <div
+                <div
                     className="d-flex align-items-stretch"
                     data-aos="fade-up"
                     data-aos-delay="100"

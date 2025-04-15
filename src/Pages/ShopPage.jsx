@@ -11,6 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 const ShopPage = () => {
 
   let [data, setData] = useState([])
+  let [search, setSearch] = useState("")
+
+  let [min, setMin] = useState(1)
+  let [max, setMax] = useState(1000)
+
+  let [flag, setFlag] = useState(false)
+
   let [mc, setMc] = useState("")
   let [sc, setSc] = useState("")
   let [br, setBr] = useState("")
@@ -39,6 +46,34 @@ const ShopPage = () => {
     setData(ProductStateData.filter(x => x.active && (mc === "All" || mc === x.maincategory) && (sc === "All" || sc === x.subcategory) && (br === "All" || br === x.brand)))
   }
 
+  function sortFilter(option) {
+    if (option === "1") {
+      setData(data.sort((x, y) => y.id.localeCompare(x.id)))
+    }
+    else if (option === "2") {
+      setData(data.sort((x, y) => x.finalPrice - y.finalPrice))
+    }
+    else {
+      setData(data.sort((x, y) => y.finalPrice - x.finalPrice))
+    }
+    setFlag(!flag)
+  }
+
+  function postSearch(e) {
+    e.preventDefault()
+    search = search.toLowerCase()
+    setData(ProductStateData.filter(x => x.active && (x?.name?.toLowerCase()?.includes(search)) ||
+      x?.maincategory?.toLowerCase() === search ||
+      x?.subcategory?.toLowerCase() === search ||
+      x?.brand?.toLowerCase() === search ||
+      x?.color?.toLowerCase() === search ||
+      x?.description?.toLowerCase().includes(search)))
+  }
+
+  function postPriceFilter() {
+    // e.preventDefault()
+  }
+
   useEffect(() => {
     let mc = searchParams.get('mc') ?? "All"
     let sc = searchParams.get('sc') ?? "All"
@@ -46,6 +81,7 @@ const ShopPage = () => {
     dispatch(getProduct())
 
     if (ProductStateData.length) {
+      setSearch("")
       setMc(mc);
       setSc(sc);
       setBr(br);
@@ -97,8 +133,37 @@ const ShopPage = () => {
                 })
               }
             </div>
+
+            <div className="mb-3">
+              <h4 className='bg-primary text-center p=2 text-light'>Price Filter</h4>
+              <form onSubmit={postPriceFilter}>
+
+              </form>
+            </div>
+
           </div>
           <div className="col-md-10">
+            <div className="row">
+              <div className="col-md-9 mb-3">
+                <form onSubmit={postSearch}>
+                  <div className="btn-group w-100">
+                    <input type="search" name="search"
+                      value={search} onChange={(e) => setSearch(e.target.value)}
+                      className='form-control border-3 border-primary'
+                      placeholder='Search Products By Name, Category, Brand, Color etc...'
+                    />
+                    <button className='btn btn-primary' type="submit">Search</button>
+                  </div>
+                </form>
+              </div>
+              <div className="col-md-3">
+                <select onChange={(e) => sortFilter(e.target.value)} className='form-select border-3 border-primary '>
+                  <option value="1">Latest</option>
+                  <option value="2">Low to High</option>
+                  <option value="3">High to Low</option>
+                </select>
+              </div>
+            </div>
             <section id="team" className="team section">
               <div className="row">
                 {
